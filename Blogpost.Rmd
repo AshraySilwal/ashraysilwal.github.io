@@ -1,0 +1,99 @@
+---
+title: "Learning the basics of ggplot and use of color."
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro
+
+In this blog I will show you the basics to making and formatting a ggplot with color. I will go over introductory steps to make these plots, which will cover very basic skills, and overall help understand how to format these plots better using color.   
+
+## Tutorial
+
+You will first need to install and load the **ggplot2** package in R:
+
+```
+install.packages("ggplot2")
+library(ggplot2)
+```
+
+To see our data set I will need to first install and load **knitr** package in R:
+
+```
+install.packages("knitr")
+library(knitr)
+```
+
+To see our table we will - 
+
+```
+head(mtcars)
+```
+``` {r, echo = FALSE, results = 'axis'}
+library(knitr)
+kable(mtcars[1:5, ])
+
+```
+
+## Making simple plots - 
+
+```
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
+```
+
+``` {r, echo = FALSE}
+library(ggplot2)
+library(MASS)
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()
+```
+
+## Using a single color in your plot - 
+
+```
+ggplot(mtcars, aes(x=wt, y=mpg)) + 
+  geom_point(color='darkblue')
+```
+
+``` {r, echo = FALSE}
+library(ggplot2)
+ggplot(mtcars, aes(x=wt, y=mpg)) + 
+  geom_point(color='darkblue')
+```
+
+## Change colors by groups - 
+
+```
+sp<-ggplot(mtcars, aes(x=wt, y=mpg, color=cyl)) + geom_point()
+sp
+```
+
+``` {r, echo = FALSE}
+library(ggplot2)
+sp <- ggplot(mtcars, aes(x=wt, y=mpg, color=cyl)) + geom_point()
+sp
+```
+
+## To make a different color scheme manually - 
+
+```
+ggplot(mtcars, aes(x=wt, y=mpg, color=as.factor(cyl))) + geom_point() + scale_color_manual(values=c('#999999','#E69F00', '#56B4E9'))
+```
+
+``` {r, echo = FALSE}
+ggplot(mtcars, aes(x=wt, y=mpg, color=as.factor(cyl))) + geom_point() + scale_color_manual(values=c('#999999','#E69F00', '#56B4E9'))
+```
+
+
+
+
+
+
+
+
+
+
+
+
